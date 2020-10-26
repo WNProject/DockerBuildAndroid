@@ -54,6 +54,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     yes | sdkmanager --licenses && \
     sdkmanager \
       "platforms;android-${ANDROID_SDK_PLATFORM_VERSION}" \
+      "build-tools;27.0.3" \ 
       platform-tools \
       ndk-bundle && \
     apt-get autoremove --purge -y && \
