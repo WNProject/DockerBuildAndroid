@@ -20,6 +20,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
 FROM ubuntu:focal-20201008
 
 # set input arguments to defaults
+ARG CMAKE_VERSION="3.16.3"
 ARG ANDROID_SDK_PLATFORM_VERSION="22"
 
 # set basic environment variables
@@ -39,7 +40,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       apt-utils \
       git \
       python3 \
-      cmake \
+      cmake=${CMAKE_VERSION}* \
       make \
       clang-10 \
       ninja-build \
