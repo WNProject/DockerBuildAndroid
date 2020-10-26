@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20200925 AS android-sdk
+FROM ubuntu:focal-20201008 AS android-sdk
 
 # set input arguments to defaults
 ARG ANDROID_SDK_VERSION="6858069"
@@ -17,7 +17,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     mkdir -p /tmp/android-sdk/cmdline-tools/latest && \
     mv /tmp/cmdline-tools/* /tmp/android-sdk/cmdline-tools/latest
 
-FROM ubuntu:focal-20200925
+FROM ubuntu:focal-20201008
 
 # set input arguments to defaults
 ARG ANDROID_SDK_PLATFORM_VERSION="22"
