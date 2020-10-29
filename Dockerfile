@@ -21,7 +21,9 @@ FROM ubuntu:focal-20201008
 
 # set input arguments to defaults
 ARG CMAKE_VERSION="3.16.3"
+ARG CLANG_VERSION="10"
 ARG ANDROID_SDK_PLATFORM_VERSION="22"
+ARG ANDROID_SDK_BUILD_TOOLS_VERSION="27.0.3"
 
 # set basic environment variables
 ENV HOME="/root" \
@@ -42,19 +44,19 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       python3 \
       cmake=${CMAKE_VERSION}* \
       make \
-      clang-10 \
+      clang-${CLANG_VERSION} \
       ninja-build \
       default-jdk && \
     update-alternatives --install \
-      /usr/bin/cc cc /usr/bin/clang-10 100 && \
+      /usr/bin/cc cc /usr/bin/clang-${CLANG_VERSION} 100 && \
     update-alternatives --install \
-      /usr/bin/c++ c++ /usr/bin/clang++-10 100 && \
+      /usr/bin/c++ c++ /usr/bin/clang++-${CLANG_VERSION} 100 && \
     update-alternatives --install \
       /usr/bin/python python /usr/bin/python3 100 && \
     yes | sdkmanager --licenses && \
     sdkmanager \
       "platforms;android-${ANDROID_SDK_PLATFORM_VERSION}" \
-      "build-tools;27.0.3" \ 
+      "build-tools;${ANDROID_SDK_BUILD_TOOLS_VERSION}" \ 
       platform-tools \
       ndk-bundle && \
     apt-get autoremove --purge -y && \
