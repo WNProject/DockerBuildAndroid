@@ -46,6 +46,9 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       make \
       clang-${CLANG_VERSION} \
       ninja-build \
+      libssl-dev \
+      pkg-config \
+      curl \
       default-jdk && \
     update-alternatives --install \
       /usr/bin/cc cc /usr/bin/clang-${CLANG_VERSION} 100 && \
@@ -53,6 +56,10 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       /usr/bin/c++ c++ /usr/bin/clang++-${CLANG_VERSION} 100 && \
     update-alternatives --install \
       /usr/bin/python python /usr/bin/python3 100 && \
+    curl https://sh.rustup.rs -sSf > rs.sh && \
+    chmod +x rs.sh && \
+    ./rs.sh -y && \
+    $HOME/.cargo/bin/cargo install sccache --features=gcs && \
     yes | sdkmanager --licenses && \
     sdkmanager \
       "platforms;android-${ANDROID_SDK_PLATFORM_VERSION}" \
@@ -64,7 +71,8 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     rm -rf \
       /var/lib/apt/lists/* \
       /var/tmp/* \
-      /tmp/*
+      /tmp/* \
+      $HOME/.cargo/registry
 
 # default command
 CMD ["bash"]
