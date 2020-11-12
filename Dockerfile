@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       curl \
       unzip && \
     BASE_URL=https://dl.google.com/android/repository/ && \
-    curl \
+    curl -sSf \
       -L ${BASE_URL}/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip \
       -o /tmp/android-sdk.zip && \
     unzip /tmp/android-sdk.zip -d /tmp && \
