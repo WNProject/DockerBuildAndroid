@@ -29,7 +29,7 @@ ARG ANDROID_SDK_BUILD_TOOLS_VERSION="27.0.3"
 ENV HOME="/root" \
     TERM="xterm" \
     ANDROID_SDK_ROOT="/opt/android-sdk"
-ENV PATH="${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin"
+ENV PATH="${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${HOME}/.cargo/bin"
 
 # copy over android sdk files
 COPY --from=android-sdk /tmp/android-sdk ${ANDROID_SDK_ROOT}
@@ -59,7 +59,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     curl https://sh.rustup.rs -sSf > rs.sh && \
     chmod +x rs.sh && \
     ./rs.sh -y && \
-    $HOME/.cargo/bin/cargo install sccache --features=gcs && \
+    cargo install sccache --features=gcs && \
     yes | sdkmanager --licenses && \
     sdkmanager \
       "platforms;android-${ANDROID_SDK_PLATFORM_VERSION}" \
