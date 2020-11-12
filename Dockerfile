@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       curl \
       unzip && \
     BASE_URL=https://dl.google.com/android/repository/ && \
-    curl \
+    curl -sSf \
       -L ${BASE_URL}/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip \
       -o /tmp/android-sdk.zip && \
     unzip /tmp/android-sdk.zip -d /tmp && \
@@ -56,9 +56,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       /usr/bin/c++ c++ /usr/bin/clang++-${CLANG_VERSION} 100 && \
     update-alternatives --install \
       /usr/bin/python python /usr/bin/python3 100 && \
-    curl https://sh.rustup.rs -sSf > rs.sh && \
-    chmod +x rs.sh && \
-    ./rs.sh -y && \
+    curl -sSf https://sh.rustup.rs | sh -s -- -y && \
     cargo install sccache --features=gcs && \
     yes | sdkmanager --licenses && \
     sdkmanager \
@@ -69,10 +67,10 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     apt-get autoremove --purge -y && \
     apt-get clean && \
     rm -rf \
+      ${HOME}/.cargo/registry \
       /var/lib/apt/lists/* \
       /var/tmp/* \
-      /tmp/* \
-      $HOME/.cargo/registry
+      /tmp/*
 
 # default command
 CMD ["bash"]
