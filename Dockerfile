@@ -56,7 +56,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       /usr/bin/c++ c++ /usr/bin/clang++-${CLANG_VERSION} 100 && \
     update-alternatives --install \
       /usr/bin/python python /usr/bin/python3 100 && \
-    curl -sSfL https://sh.rustup.rs | sh -s -- -y && \
+    curl -sSf https://sh.rustup.rs | sh -s -- -y && \
     cargo install sccache --features=gcs && \
     yes | sdkmanager --licenses && \
     sdkmanager \
