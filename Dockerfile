@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       curl \
       unzip && \
     BASE_URL=https://dl.google.com/android/repository/ && \
-    curl \
+    curl -sSf \
       -L ${BASE_URL}/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip \
       -o /tmp/android-sdk.zip && \
     unzip /tmp/android-sdk.zip -d /tmp && \
@@ -56,7 +56,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       /usr/bin/c++ c++ /usr/bin/clang++-${CLANG_VERSION} 100 && \
     update-alternatives --install \
       /usr/bin/python python /usr/bin/python3 100 && \
-    curl -sSf- L https://sh.rustup.rs -o /tmp/rs.sh && \
+    curl -sSf -L https://sh.rustup.rs -o /tmp/rs.sh && \
     chmod +x /tmp/rs.sh && \
     /tmp/rs.sh -y && \
     $HOME/.cargo/bin/cargo install sccache --features=gcs && \
