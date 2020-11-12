@@ -56,9 +56,9 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       /usr/bin/c++ c++ /usr/bin/clang++-${CLANG_VERSION} 100 && \
     update-alternatives --install \
       /usr/bin/python python /usr/bin/python3 100 && \
-    curl https://sh.rustup.rs -sSf > rs.sh && \
-    chmod +x rs.sh && \
-    ./rs.sh -y && \
+    curl -sSf- L https://sh.rustup.rs -o /tmp/rs.sh && \
+    chmod +x /tmp/rs.sh && \
+    /tmp/rs.sh -y && \
     $HOME/.cargo/bin/cargo install sccache --features=gcs && \
     yes | sdkmanager --licenses && \
     sdkmanager \
@@ -69,10 +69,10 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     apt-get autoremove --purge -y && \
     apt-get clean && \
     rm -rf \
+      ${HOME}/.cargo/registry \
       /var/lib/apt/lists/* \
       /var/tmp/* \
       /tmp/* \
-      $HOME/.cargo/registry
 
 # default command
 CMD ["bash"]
