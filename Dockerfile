@@ -22,7 +22,7 @@ FROM ubuntu:focal-20201008
 # set input arguments to defaults
 ARG CMAKE_VERSION="3.16.3"
 ARG CLANG_VERSION="10"
-ARG ANDROID_SDK_PLATFORM_VERSION="22"
+ARG ANDROID_SDK_PLATFORM_VERSION="27"
 ARG ANDROID_SDK_BUILD_TOOLS_VERSION="27.0.3"
 
 # set basic environment variables
@@ -60,6 +60,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     cargo install sccache --features=gcs && \
     yes | sdkmanager --licenses && \
     sdkmanager \
+      "platforms;android-22" \
       "platforms;android-${ANDROID_SDK_PLATFORM_VERSION}" \
       "build-tools;${ANDROID_SDK_BUILD_TOOLS_VERSION}" \ 
       platform-tools \
