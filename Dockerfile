@@ -72,7 +72,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       ${HOME}/.cargo/registry \
       /var/lib/apt/lists/* \
       /var/tmp/* \
-      /tmp/* \
+      /tmp/*
 
 # default command
 CMD ["bash"]
