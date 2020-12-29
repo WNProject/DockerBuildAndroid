@@ -42,7 +42,6 @@ jobs:
       - name: Report image details
         run: >
           docker image history
-          --no-trunc
           --format "table {{.Size}}\t{{.CreatedBy}}"
           ${{steps.info.outputs.package}}
       - name: Login into registry
