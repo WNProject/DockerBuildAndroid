@@ -16,7 +16,7 @@ jobs:
           TAGS="${PACKAGE}:latest"
           echo "##[set-output name=package;]${PACKAGE,,}"
           echo "##[set-output name=tags;]${TAGS,,}"
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Set up docker buildx
         id: buildx
