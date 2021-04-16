@@ -41,8 +41,8 @@ jobs:
         uses: docker/login-action@v1.8.0
         with:
           registry: ghcr.io
-          username: ${{secrets.CONTAINER_REGISTRY_USER}}
-          password: ${{secrets.CONTAINER_REGISTRY_TOKEN}}
+          username: ${{secrets.CONTAINER_REGISTRY_USERNAME}}
+          password: ${{github.token}}
       - name: Push image
         if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v2.4.0
