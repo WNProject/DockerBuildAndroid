@@ -1,9 +1,15 @@
-name: Build
+name: CI
 on:
   pull_request:
+    branches: main
   push:
-    branches:
-      - main
+    branches: main
+permissions:
+  contents: read
+  packages: write
+concurrency:
+  group: ci-${{github.ref}}
+  cancel-in-progress: ${{github.ref != 'refs/heads/main'}}
 jobs:
   build:
     name: Build
