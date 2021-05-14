@@ -1,7 +1,7 @@
 # Docker Build Android
 
 [![License]](LICENSE)
-[![Build][Build Badge]][Build Workflow]
+[![CI][CI Badge]][CI Workflow]
 
 Docker container containing all needed **Android** C/C++ build tools. Each
 container will contain only one version of the **Android SDK** but will contain
@@ -39,5 +39,5 @@ that `ANDROID_SDK_PLATFORM_VERSION` defaults to `22` if not supplied.
 
 <!-- external links -->
 [License]: https://img.shields.io/github/license/WNProject/DockerBuildAndroid?label=License
-[Build Badge]: https://github.com/WNProject/DockerBuildAndroid/workflows/Build/badge.svg?branch=main
-[Build Workflow]: https://github.com/WNProject/DockerBuildAndroid/actions?query=workflow%3ABuild+branch%3Amain
+[CI Badge]: https://github.com/WNProject/DockerBuildAndroid/actions/workflows/ci.yml/badge.svg?branch=main
+[CI Workflow]: https://github.com/WNProject/DockerBuildAndroid/actions/workflows/ci.yml?query=branch%3Amain
