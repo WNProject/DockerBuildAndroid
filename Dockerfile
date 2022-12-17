@@ -6,6 +6,7 @@ ARG CLANG_VERSION="10"
 ARG ANDROID_SDK_VERSION="6858069"
 ARG ANDROID_SDK_PLATFORM_VERSION="31"
 ARG ANDROID_SDK_BUILD_TOOLS_VERSION="30.0.3"
+ARG NDK_VERSION="23.1.7779620"
 
 # set basic environment variables
 ENV HOME="/root" \
@@ -54,7 +55,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
       "platforms;android-${ANDROID_SDK_PLATFORM_VERSION}" \
       "build-tools;${ANDROID_SDK_BUILD_TOOLS_VERSION}" \
       platform-tools \
-      ndk-bundle && \
+      "ndk;${NDK_VERSION}" && \
     sdkmanager --uninstall emulator && \
     rm -rf ${ANDROID_SDK_ROOT}/platform-tools-2 && \
     apt-get autoremove --purge -y && \
