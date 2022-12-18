@@ -31,11 +31,11 @@ docker run -v /src:/src build-android [command]
 ## Building
 
 ```bash
-docker build . -t build-android --build-arg ANDROID_SDK_PLATFORM_VERSION=22 .
+docker build . -t build-android --build-arg ANDROID_SDK_PLATFORM_VERSION=31 .
 ```
 
-Currently only version `22` for the **Android SDK** platform is supported. Note
-that `ANDROID_SDK_PLATFORM_VERSION` defaults to `22` if not supplied.
+Currently only version `31` for the **Android SDK** platform is supported. Note
+that `ANDROID_SDK_PLATFORM_VERSION` defaults to `31` if not supplied.
 
 <!-- external links -->
 [License]: https://img.shields.io/github/license/WNProject/DockerBuildAndroid?label=License
