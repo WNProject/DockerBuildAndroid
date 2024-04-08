@@ -52,7 +52,7 @@ jobs:
           ${{steps.info.outputs.package}}
       - name: Login into registry
         if: github.ref == 'refs/heads/main'
-        uses: docker/login-action@v3.0.0
+        uses: docker/login-action@v3.1.0
         with:
           registry: ghcr.io
           username: ${{github.actor}}
